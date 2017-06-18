@@ -1,0 +1,144 @@
+body {
+  text-align: center;
+}
+
+#debug {
+  position: fixed;
+  bottom: 5px;
+}
+
+#container {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  top: 50px;
+}
+
+#container img {
+  margin-bottom: -4px;
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  text-align: left;
+}
+
+.node {
+  position: absolute;
+  color: transparent;
+  height: 0;
+  width: 0;
+  border: 1px solid transparent;
+  font-size: 0;
+  margin-top: 5px;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.node:hover {
+  border-radius: 10px;
+  font-size: 13px;
+  height: 16px;
+  padding-right: 22px;
+  width: auto;
+  color: black;
+  font-family: georgia;
+  margin-top: 0;
+  margin-left: 0;
+  z-index: 1;
+}
+
+.node:before {
+  display: block;
+  float: left;
+  width: 8px;
+  height: 8px;
+  content: "";
+  margin: 0px;
+}
+
+.node:hover:before {
+  margin: 4px;
+}
+
+/* --------------------- COLORS --------------------- */
+
+.node.red:hover {
+  background: #f77;
+  border: 2px solid #700;
+}
+
+.node.red:before {
+  background: url(nodes.png) -0px -0px;
+}
+
+
+.node.orange:hover {
+  background: #fa7;
+  border: 2px solid #730;
+}
+
+.node.orange:before {
+  background: url(nodes.png) -8px -0px;
+}
+
+
+.node.yellow:hover {
+  background: #fe7;
+  border: 2px solid #870;
+}
+
+.node.yellow:before {
+  background: url(nodes.png) -16px -0px;
+}
+
+
+.node.green:hover {
+  background: #7f7;
+  border: 2px solid #070;
+}
+
+.node.green:before {
+  background: url(nodes.png) -24px -0px;
+}
+
+
+.node.cyan:hover {
+  background: #7ff;
+  border: 2px solid #077;
+}
+
+.node.cyan:before {
+  background: url(nodes.png) -0px -8px;
+}
+
+
+.node.blue:hover {
+  background: #77f;
+  border: 2px solid #007;
+}
+
+.node.blue:before {
+  background: url(nodes.png) -8px -8px;
+}
+
+
+.node.purple:hover {
+  background: #a7f;
+  border: 2px solid #307;
+}
+
+.node.purple:before {
+  background: url(nodes.png) -16px -8px;
+}
+
+
+.node.magenta:hover {
+  background: #f7f;
+  border: 2px solid #707;
+}
+
+.node.magenta:before {
+  background: url(nodes.png) -24px -8px;
+}
