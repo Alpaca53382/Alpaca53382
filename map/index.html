@@ -54,7 +54,7 @@
           // dot.style.top = event.pageY + "px";
           // document.body.appendChild(dot);
           
-          window.debug.innerHTML = (event.pageX - 536) + ", " + (event.pageY - 70)
+          window.debug.innerHTML = (event.pageX - Math.floor(document.documentElement.clientWidth/2) + 424) + ", " + (event.pageY - 70)
         }
       })();
     </script> <!-- Mouse position -->
