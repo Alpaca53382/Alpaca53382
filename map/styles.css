@@ -11,15 +11,6 @@ body {
   top: 5px;
 }
 
-#mapcredits {
-  display: block;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 5px;
-}
-
 #container {
   position: relative;
   display: inline-block;
@@ -37,6 +28,12 @@ body {
   text-align: left;
 }
 
+#map {
+  width: 982px;
+  height: 767px;
+  background: url(map.png) -16px -19px;
+}
+
 .node {
   position: absolute;
   color: transparent;
@@ -44,8 +41,8 @@ body {
   width: 0;
   border: 1px solid transparent;
   font-size: 0;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: -4px;
+  margin-left: -4px;
   white-space: nowrap;
 }
 
@@ -57,8 +54,8 @@ body {
   width: auto;
   color: black;
   font-family: georgia;
-  margin-top: 0;
-  margin-left: 0;
+  margin-top: -9px;
+  margin-left: -9px;
   z-index: 1;
 }
 
@@ -77,41 +74,41 @@ body {
 
 /* --------------------- COLORS --------------------- */
 
-.node.red:hover {
-  background: #f77;
-  border: 2px solid #700;
+.node.themis:hover {
+  background: #7f7;
+  border: 2px solid #070;
 }
 
-.node.red:before {
+.node.themis:before {
   background: url(nodes.png) 0px 0px;
 }
 
 
-.node.yellow:hover {
+.node.dungeon:hover {
   background: #fe7;
   border: 2px solid #870;
 }
 
-.node.yellow:before {
+.node.dungeon:before {
   background: url(nodes.png) 8px 0px;
 }
 
 
-.node.blue:hover {
-  background: #77f;
-  border: 2px solid #007;
+.node.liber:hover {
+  background: #7ff;
+  border: 2px solid #077;
 }
 
-.node.blue:before {
+.node.liber:before {
   background: url(nodes.png) 0px 8px;
 }
 
 
-.node.purple:hover {
+.node.other:hover {
   background: #b7e;
   border: 2px solid #407;
 }
 
-.node.purple:before {
+.node.other:before {
   background: url(nodes.png) 8px 8px;
 }
