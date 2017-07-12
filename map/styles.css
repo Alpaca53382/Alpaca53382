@@ -31,7 +31,7 @@ body {
 #map {
   width: 982px;
   height: 767px;
-  background: url(map.png) -16px -19px;
+  background: url(map.png);
 }
 
 .node {
