@@ -29,9 +29,9 @@ function answerClick(points,n) {
 }
 
 function choose(points) {
-  //console.log(points);
+  console.log(points);
   for (var n in points){
-    quizPoints[points[n]-1]++;
+    quizPoints[points[n]-1][1]++;
   }
 }
 
@@ -41,14 +41,26 @@ function begin() {
   divResults  = document.getElementById("results" );
   document.getElementById("begin").style.display = "none";
   divQuestion.style.display = "block";
-  divAnswer.style.display = "block";
-  quizPoints  = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  divAnswer.style.display = "flex";
+  quizPoints  = [];
+  for (var i = 0; i < 16; i++) {
+    quizPoints = quizPoints.concat([[personalityTypes[i], 0]]);
+  }
   nextQuestion(0);
 }
 
 function results() {
   divQuestion.style.display = "none";
   divAnswer.style.display = "none";
+  quizPoints.sort(function(a,b) {return a[1] - b[1]});
+  for (var i = 15; i >= 0; i--) {
+    result = document.createElement("span");
+    result.textContent = quizPoints[i][0] + ": " + quizPoints[i][1];
+    divResults.append(result);
+    result = document.createElement("div");
+    divResults.append(result);
+    result.style.width = ((quizPoints[i][1] + 1) / (quizPoints[15][1] + 1) * 500) + "px";
+  }
+  document.getElementById("you").textContent = quizPoints[15][0];
   divResults.style.display = "block";
-  divResults.textContent = personalityTypes[quizPoints.indexOf(Math.max(...quizPoints))];
 }

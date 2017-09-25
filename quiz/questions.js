@@ -1,3 +1,6 @@
+// totally a .json file
+// no really it's just because file:// urls are dumb and break same-origin policy stuff
+// also this file is exactly 1000 lines! yeah!
 questions = [
   {
     "comment": "Random, Simple Questions",
@@ -435,7 +438,7 @@ questions = [
     ]
   },
   {
-    "q": "Your friend made a meal that tastes terrible. They ask, \"How is it?\". You say…?",
+    "q": "Your friend made a meal that tastes terrible. They ask, \"How is it?\". You say...?",
     "a": [
       {
         "text": "\"Terrible!\"",
@@ -446,7 +449,7 @@ questions = [
         "points": [3, 3, 9]
       },
       {
-        "text": "Yum! I love dessert the most!",
+        "text": "Um... it's good...",
         "points": [13, 16]
       }
     ]
@@ -574,7 +577,7 @@ questions = [
     ]
   },
   {
-    "q": "Good news & bad news… which one do you want to hear first?",
+    "q": "Good news & bad news... which one do you want to hear first?",
     "a": [
       {
         "text": "The good news.",
@@ -591,7 +594,7 @@ questions = [
     ]
   },
   {
-    "q": "Hey look! There's someone behind you! So… did you look just now?",
+    "q": "Hey look! There's someone behind you! So... did you look just now?",
     "a": [
       {
         "text": "Don't do that! You scared me!",
@@ -808,7 +811,7 @@ questions = [
     ]
   },
   {
-    "q": "Your friend seems to be making plans to hang out, just out of earshot. You think…",
+    "q": "Your friend seems to be making plans to hang out, just out of earshot. You think...",
     "a": [
       {
         "text": "I want to go too!",
@@ -842,7 +845,7 @@ questions = [
     ]
   },
   {
-    "q": "You've won a big raffle ticket! You say…",
+    "q": "You've won a big raffle ticket! You say...",
     "a": [
       {
         "text": "Woo-hoo!",
@@ -889,7 +892,7 @@ questions = [
     ]
   },
   {
-    "q": "You fail miserably! Everyone found out, & they're disappointed in you… what do you do?",
+    "q": "You fail miserably! Everyone found out, & they're disappointed in you... what do you do?",
     "a": [
       {
         "text": "Try & hide.",
@@ -900,7 +903,7 @@ questions = [
         "points": [10, 10, 15, 15]
       },
       {
-        "text": "What?! Why?!",
+        "text": "Drop down & play dead!",
         "points": [13, 13]
       }
     ]
@@ -961,7 +964,7 @@ questions = [
     ]
   },
   {
-    "q": "You see a big and comfortable bed. Your first reaction is to…",
+    "q": "You see a big and comfortable bed. Your first reaction is to...",
     "a": [
       {
         "text": "Jump on it!",
@@ -978,7 +981,7 @@ questions = [
     ]
   },
   {
-    "q": "You're daydreaming… when your friend sprays you with water! What do you do?",
+    "q": "You're daydreaming... when your friend sprays you with water! What do you do?",
     "a": [
       {
         "text": "Get mad.",
@@ -994,4 +997,4 @@ questions = [
       }
     ]
   }
-]
+];
