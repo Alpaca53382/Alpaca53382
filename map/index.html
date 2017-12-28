@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Frost Continent Interactive Map</title>
+    <title>Storm Continent Map</title>
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <div id="container">
-      <div id=map></div>
-      <div id="main">
+      <div id="map">
+        <img id=base src="base.png">
+        <img id=ocean-currents src="ocean-currents.png">
+        <img id=air-currents src="air-currents.png">
+      </div>
+      <div id="controls">
+        <input type="checkbox" id="oc-box"><label for="oc-box">Show ocean currents</label><br>
+        <input type="checkbox" id="ac-box"><label for="ac-box">Show air currents</label>
       </div>
     </div>
     <br>
-    <div id="debug">0, 0</div>
+    <!--<div id="debug">0, 0</div>-->
     
     
     <script>
+      ocBox = document.getElementById("oc-box");
+      ocImage = document.getElementById("ocean-currents");
+      ocBox.onclick = () => {
+        if (ocBox.checked) {
+          ocImage.style.display = "block";
+        } else {
+          ocImage.style.display = "none";
+        }
+      }
+      
+      acBox = document.getElementById("ac-box");
+      acImage = document.getElementById("air-currents");
+      acBox.onclick = () => {
+        if (acBox.checked) {
+          acImage.style.display = "block";
+        } else {
+          acImage.style.display = "none";
+        }
+      }
+      
+      
       //https://stackoverflow.com/questions/7790725/javascript-track-mouse-position
       (function() {
         "use strict";
@@ -51,7 +78,7 @@
           
           window.debug.innerHTML = (event.pageX - Math.floor(document.documentElement.clientWidth/2) + 492) + ", " + (event.pageY - 61)
         }
-      })();
+      })/*()*/;
     </script> <!-- Mouse position -->
   </body>
 </html>
