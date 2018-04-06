@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Example Interacive Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #map {
+            width: 1000px;
+            margin: auto;
+        }
+        #locations {
+            position: relative;
+            margin-top: -1004px;
+            height: 1000px;
+        }
+        #locations img {
+            position: absolute;
+            opacity: 0;
+        }
+        #descriptions {
+            width: 700px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="map">
+        <img src="map.png" id="map">
+        <div id="locations">
+            <img style="left:302px;top:427px;" src="locations/example-words.png" alt="Example Words" target="example-words"></span>
+            <img style="left:639px;top:480px;" src="locations/words-2.png" alt="Words 2" target="words-2">
+        </div>
+    </div>
+    <div id="descriptions">
+        <h1 id="example-words">Example Words</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero odio laudantium repellendus dolorem nihil! Nam id consequuntur dolor, eos perferendis harum possimus debitis corporis alias, architecto veritatis, esse accusamus. Saepe eligendi perspiciatis repellat, dolores expedita enim debitis, veniam temporibus rem in error molestiae ad, magnam incidunt possimus delectus et dignissimos praesentium neque corrupti suscipit beatae perferendis porro id. Repudiandae error animi ad aspernatur nihil tempora ducimus quidem voluptates quis, magnam ratione labore laboriosam nobis porro nemo molestias similique possimus! Nihil dignissimos ex, amet eum consequatur porro libero. Itaque possimus eum esse veritatis voluptatum explicabo! Dolores dolore ex quas similique culpa explicabo repellat aperiam sequi nisi deleniti laudantium ipsum cumque, et fugiat, expedita ratione reprehenderit! Velit, voluptate minima sunt obcaecati at nisi exercitationem voluptatum eveniet, fugiat harum quidem! Esse vel sunt quod itaque culpa repellendus corporis cupiditate iusto soluta! Et voluptates sequi, rerum facere ea quas reiciendis non provident, accusamus quia tenetur voluptas iure sunt nemo saepe nihil itaque placeat laboriosam. Facilis velit ratione modi fuga recusandae ut ex odit, inventore porro molestias placeat deserunt officia incidunt quaerat quod. Impedit, ipsa tenetur neque voluptates maiores vero amet consectetur! Nisi voluptates ad impedit nihil suscipit itaque vero, excepturi id, eligendi, non ipsum.</p>
+        <h1 id="words-2">Words 2</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt nobis reprehenderit eius repudiandae magnam placeat, quibusdam ad in, voluptatem, aut fugiat libero exercitationem deserunt porro repellendus minus dolore! A consectetur rerum eveniet quae, aliquid quidem eius repudiandae possimus beatae error aspernatur vitae odit eaque cum voluptates recusandae hic iste deleniti maiores facilis similique. Iusto obcaecati perferendis dolorum illo assumenda, sequi, dicta totam doloribus autem sit tempore quod, neque repellat numquam suscipit voluptates aperiam saepe iure! Repellendus iste fugit cumque inventore fugiat numquam commodi placeat ab impedit aspernatur provident est culpa officia, saepe quaerat consectetur minima autem rerum dolore quibusdam aut ipsam non ipsum sapiente? Veritatis tempore impedit quaerat voluptate commodi alias suscipit quae. Alias vel, eos eius omnis minima nam esse pariatur sunt dolores reprehenderit laboriosam cupiditate eveniet facilis, blanditiis ipsam officia soluta consequatur illum. Eos enim aspernatur dolores non eius, eum, nemo illo at, dolor animi alias repellat pariatur ratione! Dolorem est beatae fuga asperiores voluptas, quo, at iure repudiandae dolore reprehenderit delectus iste! Nihil nesciunt rem adipisci culpa, cupiditate ipsam ab maxime quod, vitae vero omnis. Et saepe ea tempora modi inventore praesentium veniam vel provident sint perferendis esse omnis maxime, perspiciatis deleniti voluptatum enim iusto eos laudantium?</p>
+        <h1>Space filler</h1>
+        <p>This is here so that there's more stuff below the other things. I need this in order to properly show off the scrolling. On the actual thing there'll be footers and such down here.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur impedit repudiandae ipsam cum quidem. Dolores eaque provident laboriosam ipsa accusamus perspiciatis possimus cumque incidunt exercitationem rerum, autem beatae nesciunt tempora ratione! Laudantium error obcaecati aperiam cumque, illo vero, suscipit iure modi distinctio odit eum officiis explicabo harum totam molestiae laboriosam soluta, cupiditate in reiciendis cum optio sapiente? Distinctio obcaecati earum sint exercitationem mollitia quasi, odio ipsam iure autem ad accusantium cumque pariatur corrupti dignissimos cupiditate quisquam sunt esse? Labore nisi tenetur et, quibusdam porro dolor unde culpa aut suscipit eum molestias libero neque maxime eaque voluptate, commodi iste modi. Hic, iure eum! Vero, nesciunt quidem! Tempora eaque commodi facilis cupiditate nesciunt nihil nobis provident quasi ex, est, ab eum enim porro quaerat? Minima laudantium perspiciatis inventore maxime assumenda a dolores, cum tenetur quasi? Explicabo iusto quae aperiam? Odit vel laborum delectus enim ipsum accusamus blanditiis hic! Veniam, necessitatibus? Eum, reprehenderit voluptatibus iusto iure in deserunt unde quo debitis animi vero, laborum quis! Quas rem aperiam sit aliquam quam. Quam dolorem saepe ratione rem culpa doloribus et, natus deleniti voluptates maxime, provident repellendus omnis laudantium debitis, molestiae vel. Quod, error beatae suscipit nisi cupiditate dolorem, totam maxime neque eligendi alias eaque.</p>
+    </div>
+    <script>
+        Array.from(document.querySelectorAll("#locations img")).forEach(item => {
+            item.onpointerenter = (e) => {
+                item.style.opacity = "1";
+            };
+            item.onpointerleave = (e) => {
+                item.style.opacity = "0";
+            };
+            item.onclick = (e) => {
+                document.querySelector("#descriptions #" + item.getAttribute("target") + "+p").scrollIntoView({behavior: 'smooth'});
+            }
+        });
+    </script>
+</body>
+</html>
