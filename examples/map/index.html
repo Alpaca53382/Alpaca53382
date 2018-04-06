@@ -19,6 +19,9 @@
             position: absolute;
             opacity: 0;
         }
+        #locations img:hover {
+            opacity: 1;
+        }
         #descriptions {
             width: 700px;
             margin: auto;
@@ -44,14 +47,9 @@
     </div>
     <script>
         Array.from(document.querySelectorAll("#locations img")).forEach(item => {
-            item.onpointerenter = (e) => {
-                item.style.opacity = "1";
-            };
-            item.onpointerleave = (e) => {
-                item.style.opacity = "0";
-            };
+            let target = document.querySelector("#descriptions #" + item.getAttribute("target") + "+p");
             item.onclick = (e) => {
-                document.querySelector("#descriptions #" + item.getAttribute("target") + "+p").scrollIntoView({behavior: 'smooth'});
+                target.scrollIntoView({behavior: 'smooth'});
             }
         });
     </script>
