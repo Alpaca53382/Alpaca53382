@@ -1,0 +1,78 @@
+#timeline {
+    background-color: #aaa;
+    width: 0px;
+    margin: auto;
+    user-select: none;
+    border: 1px solid #aaa;
+    padding: 10px 0 44px;
+}
+#timeline-container {
+    margin: auto;
+    width: 30px;
+    text-align: center;
+}
+#start {
+    width: 0;
+    height: 0;
+    border: 10px solid;
+    border-color: #aaa transparent transparent transparent;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: -11px;
+}
+#end {
+    width: 0;
+    height: 0;
+    border: 10px solid;
+    border-color: transparent transparent #aaa transparent;
+    margin: auto;
+    margin-top: -11px;
+}
+.item {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    margin-left: -7px;
+}
+.node {
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border: 7px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2pt #aaa;
+    margin-left: -10px;
+    cursor: ns-resize;
+}
+.label {
+    position: relative;
+    left: 150px;
+    border: 2px solid #aaa;
+    border-radius: 10px;
+    margin-left: -100px;
+    margin-top: -49px;
+    background: #fff;
+    cursor: move;
+    width: 210px;
+    height: 50px;
+    padding: 5px;
+    outline: none;
+    resize: none;
+    font-size: 20px;
+    text-align: center;
+}
+.label textarea:focus {
+    user-select: text;
+}
+.line {
+    position: relative;
+    left: 6px;
+    top: -36px;
+    height: 150px;
+    width: 2px;
+    background: #aaa;
+    transform-origin: top center;
+    transform: rotate(-90deg);
+    z-index: -1;
+}
