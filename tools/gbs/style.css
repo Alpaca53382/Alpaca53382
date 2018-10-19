@@ -1,0 +1,10 @@
+#code {
+    font-family: monospace;
+    font-size: 20px;
+    width: 50em;
+    display: block;
+    outline: none;
+    margin: auto;
+    height: 90vh;
+    tab-size: 4;
+}
