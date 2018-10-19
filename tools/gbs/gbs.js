@@ -213,8 +213,11 @@ function play() {
                 gain.value = 0;
                 octave = 0;
             }
+            pan.value = 0;
         }
     }
+    global.pan.value = 0;
+    global.gain.value = 1;
     tempo = 10;
     clearTimeout(songTimeout);
     lines = code.value.split("\n");
