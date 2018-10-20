@@ -7,6 +7,15 @@ code.addEventListener("keydown",(e) => {
             "\t" + code.value.substring(code.selectionEnd);
         code.selectionStart = code.selectionEnd = start + 1;
     }
+    if (e.keyCode == 13) {
+        e.preventDefault();
+        let start = code.selectionStart;
+        code.value = code.value.substring(0,code.selectionStart) +
+            "\n\t" + code.value.substring(code.selectionEnd);
+        code.selectionStart = code.selectionEnd = start + 2;
+        code.style.height = (code.value.split("\n").length + 1) * 23 + "px"
+    }
+    setTimeout(()=>code.style.height = (code.value.split("\n").length + 1) * 23 + "px", 0);
 });
 
 const audio = new AudioContext();
@@ -53,12 +62,14 @@ const channel1 = {
     fadeDir: 0,
     fadeSpeed: 0,
     dutyCycle: 2,
+    tone: 0,
     pointer: 0,
     line: "",
     subroutine: false,
     caller: 0,
     loopCount: 0,
     loopLine: 0,
+    pointerElement: document.getElementById("c1pointer"),
 };
 channel1.osc.type = "sawtooth";
 channel1.osc.start(0);
@@ -87,12 +98,14 @@ const channel2 = {
     fadeDir: 0,
     fadeSpeed: 0,
     dutyCycle: 2,
+    tone: 0,
     pointer: 0,
     line: "",
     subroutine: false,
     caller: 0,
     loopCount: 0,
     loopLine: 0,
+    pointerElement: document.getElementById("c2pointer"),
 };
 channel2.osc.type = "sawtooth";
 channel2.osc.start(0);
@@ -118,12 +131,14 @@ const channel3 = {
     volume: 1,
     length: 0,
     lengthMultiplier: 1,
+    tone: 0,
     pointer: 0,
     line: "",
     subroutine: false,
     caller: 0,
     loopCount: 0,
     loopLine: 0,
+    pointerElement: document.getElementById("c3pointer"),
 };
 instrument_fft_data.forEach(instrument => {
     channel3.waves.push(audio.createPeriodicWave(instrument.cos,instrument.sin));
@@ -150,6 +165,7 @@ const channel4 = {
     caller: 0,
     loopCount: 0,
     loopLine: 0,
+    pointerElement: document.getElementById("c4pointer"),
 };
 channel4.drums.forEach((obj, kit) => {
     Object.keys(noteKeys).map(note => {
@@ -225,15 +241,19 @@ function play() {
     let match;
     if (lines[1] && (match = lines[1].match(/^\s*musicheader \d, 1, (\w+)$/))) {
         channel1.pointer = lines.indexOf(match[1]+":");
+        channel1.pointerElement.style.top = channel1.pointer * 23 + "px";
     }
     if (lines[2] && (match = lines[2].match(/^\s*musicheader 1, 2, (\w+)$/))) {
         channel2.pointer = lines.indexOf(match[1]+":");
+        channel2.pointerElement.style.top = channel2.pointer * 23 + "px";
     }
     if (lines[3] && (match = lines[3].match(/^\s*musicheader 1, 3, (\w+)$/))) {
         channel3.pointer = lines.indexOf(match[1]+":");
+        channel3.pointerElement.style.top = channel3.pointer * 23 + "px";
     }
     if (lines[4] && (match = lines[4].match(/^\s*musicheader 1, 4, (\w+)$/))) {
         channel4.pointer = lines.indexOf(match[1]+":");
+        channel4.pointerElement.style.top = channel4.pointer * 23 + "px";
     }
     advanceSong();
     document.getElementById("pause").textContent = "Pause";
@@ -299,6 +319,7 @@ function loadState() {
             subroutine = savedState[channel].subroutine;
             caller = savedState[channel].caller;
             pointer = savedState[channel].pointer;
+            pointerElement.style.top = pointer * 23 + "px";
             length = savedState[channel].length;
             pan.value = savedState[channel].pan;
             lengthMultiplier = savedState[channel].lengthMultiplier;
@@ -316,8 +337,6 @@ function loadState() {
                     fadeDir = savedState[channel].fadeDir;
                     fadeSpeed = savedState[channel].fadeSpeed;
                 }
-            } else {
-                
             }
         }
     }
@@ -329,10 +348,10 @@ function loadState() {
 function advanceSong() {
     for (channel in [channel1, channel2, channel3, channel4]) {
         with ([channel1,channel2,channel3,channel4][channel]) {
-            if (pointer == 0) continue;
-            // console.log([channel1,channel2,channel3,channel4][channel]);
+            // TODO: if (pointer == 0) continue;
             loop: while (--length <= 0) {
                 line = lines[++pointer].trim();
+                pointerElement.style.top = pointer * 23 + "px";
                 if (line.indexOf(";") != -1) line = line.substring(0,line.indexOf(";")).trim();
                 if (line == "") continue;
                 let command = line.split(/\s+/)[0];
@@ -363,6 +382,7 @@ function advanceSong() {
                     case "stereopanning":
                     case "panning":
                         // break; // disable stereo;
+                        // TODO: what does anything other than f or 0 do
                         switch (args[0]) {
                             case "$f":
                             case "$0f":
@@ -395,14 +415,17 @@ function advanceSong() {
                             // meanwhile I get to do some math
                             volume = parseInt(args[0][1],16)/15;
                             fadeDir = parseInt(args[0][2],16) > 7 ? 1 : 0;
-                            fadeSpeed = parseInt(args[0][2],16) % 8;
+                            fadeSpeed = parseInt(args[0][2],16) % 8; // TODO: this probably is dependent on the note length
                         }
                         break;
                     case "dutycycle":
                         dutyCycle = parseInt(args[0].replace("$",""),16);
                         break;
                     case "octave":
-                        octave = args[0] - (channel == 2); // well that was simple enough
+                        octave = args[0] - (channel == 2);
+                        break;
+                    case "tone":
+                        tone = parseInt(args[0].replace("$",""),16);
                         break;
                     case "callchannel":
                         subroutine = true;
@@ -421,7 +444,7 @@ function advanceSong() {
                         break;
                     case "loopchannel":
                         if (loopLine == pointer) {
-                            if (args[0] == 0 || ++loopCount < args[0]) {
+                            if (args[0] == 0 || ++loopCount < args[0]-1) {
                                 pointer = lines.indexOf(args[1]+":");
                             }
                         } else {
@@ -437,7 +460,7 @@ function advanceSong() {
                                 length = args[1] * lengthMultiplier;
                                 break loop;
                             };
-                            osc.frequency.value = noteKeys[args[0]]*(2**octave);
+                            osc.frequency.value = noteKeys[args[0]]*(2**octave) + 131072/(2048-tone) - 64;
                             // console.log(channel);
                             if (channel <= 1) delay.value = [0.125,0.25,0.5,0.75][dutyCycle] * 1/osc.frequency.value;
                             // console.log(volume);
@@ -461,6 +484,7 @@ function advanceSong() {
                         break; // TODO: I don't actually know how this works well enough, requires testing
                         if (channel != 0) break;
                         osc.frequency.linearRampToValueAtTime(noteKeys[args[2]]*(2**args[1]), audio.currentTime + args[0])
+                        break;
                 }
             }
         }

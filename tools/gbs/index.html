@@ -12,10 +12,19 @@
 </head>
 <body>
     <textarea name="code" id="code"></textarea>
-    <button id="play" onclick="play()">Play</button>
-    <button id="pause" onclick="pause()" disabled>Pause</button>
-    <button id="save" onclick="saveState()">Save State</button>
-    <button id="load" onclick="loadState()" disabled>Load State</button>
-    Note: slidepitchto and vibrato are not yet implemented.
+    <div id="c1pointer" class="pointer">1</div>
+    <div id="c2pointer" class="pointer">2</div>
+    <div id="c3pointer" class="pointer">3</div>
+    <div id="c4pointer" class="pointer">4</div>
+    <div id="sidebar">
+        <button id="play" onclick="play()">Play</button>
+        <button id="pause" onclick="pause()" disabled>Pause</button>
+        <button id="save" onclick="saveState()">Save State</button>
+        <button id="load" onclick="loadState()" disabled>Load State</button>
+        <br>
+        <div id="sidebar-bottom">
+            Note: slidepitchto and vibrato are not yet implemented.
+        </div>
+    </div>
 </body>
 </html>

@@ -1,10 +1,64 @@
 #code {
     font-family: monospace;
     font-size: 20px;
-    width: 50em;
     display: block;
     outline: none;
-    margin: auto;
+    width: 100%;
     height: 90vh;
     tab-size: 4;
+    resize: none;
+    white-space: nowrap;
+    overflow-x: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+body {
+    margin-left: 25em;
+}
+#sidebar {
+    position: fixed;
+    height: 100vh;
+    width: 25em;
+    top: 0;
+    left: 0;
+    padding: 1em;
+}
+#sidebar-bottom {
+    position: absolute;
+    bottom: 3em;
+}
+button {
+    width: 8em;
+}
+.pointer {
+    position: absolute;
+    margin-top: 25px;
+    font-size: 10px;
+    font-family: monospace;
+    padding: 0 3.5px;
+    box-sizing: border-box;
+    color: white;
+    border-radius: 6px;
+    height: 13px;
+    width: 13px;
+}
+#c1pointer {
+    top: 23px;
+    margin-left: 8px;
+    background: #c55;
+}
+#c2pointer {
+    top: 46px;
+    margin-left: 20px;
+    background: #cc5;
+}
+#c3pointer {
+    top: 69px;
+    margin-left: 32px;
+    background: #5c5;
+}
+#c4pointer {
+    top: 92px;
+    margin-left: 44px;
+    background: #55c;
 }
