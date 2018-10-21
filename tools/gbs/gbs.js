@@ -348,7 +348,7 @@ function loadState() {
 function advanceSong() {
     for (channel in [channel1, channel2, channel3, channel4]) {
         with ([channel1,channel2,channel3,channel4][channel]) {
-            // TODO: if (pointer == 0) continue;
+            if (pointer == 0) continue;
             loop: while (--length <= 0) {
                 line = lines[++pointer].trim();
                 pointerElement.style.top = pointer * 23 + "px";
